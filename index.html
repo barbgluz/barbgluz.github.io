@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escalonador de Processos</title>
+
+    <!-- Load jQuery first -->
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <!-- Load Materialize CSS and JS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="./assets/stylesheet.css">
+    <script type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</head>
+
+<body>
+    <main>
+        <div class="cont">
+            <!-- Primeira seção -->
+            <div class="row mb-0 h-100vh first-section">
+                <div class="col h-100 s12 m4 teal lighten-2 card-container">
+                    <h5 class="center-align white-text">Escalonador de processos</h5>
+                    <div class="row">
+                        <div class="col s12 m12">
+                            <!-- CARD -->
+                            <div class="card">
+                                <div class="card-content">
+                                    <form action="#">
+                                        <div class="row">
+                                            <div class="input-field col s4">
+                                                <input id="numero_processos" type="number" class="validate" required>
+                                                <label for="numero_processos"># Processos</label>
+                                            </div>
+                                            <div class="input-field col s4">
+                                                <input id="quantum" type="number" class="validate" required>
+                                                <label for="quantum">Quantum</label>
+                                            </div>
+                                            <div class="input-field col s4">
+                                                <input id="sobrecarga" type="number" class="validate" required>
+                                                <label for="sobrecarga">Sobrecarga</label>
+                                            </div>
+                                            <div class="col s12">
+                                                <label>Algoritmo de escalonamento</label>
+                                                <div class="radio-group radio-items">
+                                                    <p>
+                                                        <label>
+                                                            <input name="algoritmo" value="FIFO" type="radio" checked />
+                                                            <span>FIFO</span>
+                                                        </label>
+                                                    </p>
+                                                    <p>
+                                                        <label>
+                                                            <input name="algoritmo" value="SJF" type="radio" />
+                                                            <span>SJF</span>
+                                                        </label>
+                                                    </p>
+                                                    <p>
+                                                        <label>
+                                                            <input name="algoritmo" value="RR" type="radio" />
+                                                            <span>Round Robin</span>
+                                                        </label>
+                                                    </p>
+                                                    <p>
+                                                        <label>
+                                                            <input name="algoritmo" value="EDF" type="radio" />
+                                                            <span>EDF</span>
+                                                        </label>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Novo controle deslizante -->
+                                        <div class="row">
+                                            <div class="col s12 m4">
+                                                <label for="customRange1" class="form-label">Velocidade</label>
+                                                <input type="range" class="form-range" id="customRange1" min="0"
+                                                max="100" value="50">
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col s6 m2">
+                                                <button id="reset_btn"
+                                                class="btn waves-effect waves-red blue-grey lighten-4 blue-grey-text text-darken-4"
+                                                type="reset">Limpar</button>
+                                            </div>
+
+                                            <div class="col s6 m2">
+                                                <button class="btn waves-effect waves-light" type="button"
+                                                id="iniciar">Iniciar</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <!-- /CARD -->
+                        </div>
+                    </div>
+                </div>
+                <div class="col s12 m8 h-100 processos-container" id="processos_container">
+                    <div class="row">
+                        <div class="container col s12 m12" id="placeholder_text">
+                            <h5 class="flex-text">Insira os valores número de processos, quantum, sobrecarga e algoritmo
+                                de escalonamento para iniciar</h5>
+                            </div>
+
+                            <div class="col s12 m12" id="processos_placeholder"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Segunda seção com o texto "Olá" -->
+                <div class="row">
+                    <div class="col s12 second-section">
+                        <div class="card-panel teal">
+                            <span class="white-text">
+                                <div id="grant-container"></div>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Modal Structure -->
+        <div id="alert-modal" class="modal">
+            <div class="modal-content">
+                <h4 id="alert-title">Erro de Validação</h4>
+                <p id="alert-message">Por favor, preencha todos os campos do sistema e de cada processo.</p>
+            </div>
+            <div class="modal-footer">
+                <a href="#!" class="modal-close waves-effect waves-green btn-flat">OK</a>
+            </div>
+        </div>
+
+        <script>
+            class Process {
+                constructor(id, start, duration, deadline) {
+                    this._assertArguments(start, duration, deadline);
+                    this.id = id;
+                    this.start = start;
+                    this.duration = duration;
+                    this.deadline = this.start + deadline;
+                    this.elapsed = 0;
+                }
+
+                tick() {
+                    this.elapsed++;
+                }
+
+                started() {
+                    return this.elapsed > 0;
+                }
+
+                finished() {
+                    return this.elapsed >= this.duration;
+                }
+
+                _assertArguments(start, duration, deadline) {
+                    if (start < 0) throw Error("'start' has to be greater than or equal to 0");
+                    if (duration <= 0) throw Error("'duration' has to be greater than 0");
+                    if (deadline <= 0) throw Error("'deadline' has to be greater than 0");
+                }
+            }
+
+            class Scheduler {
+                constructor(algorithm, quantum, overload) {
+                    this._algorithm = algorithm;
+                    this._quantum = quantum;
+                    this._overload = overload;
+
+                    this._clock = 0;
+                    this._currentQuantum = quantum;
+                    this._currentOverload = 0;
+                    this._inExecution = null;
+                    this._inOverload = false;
+                    this._jobQueue = [];
+                    this._readyQueue = [];
+                }
+
+                status() {
+                    let ret = {};
+                    if (this._inExecution)
+                    ret[this._inExecution.id] = this._inOverload
+                    ? "overload"
+                    : "executing";
+                    this._readyQueue.forEach((p) => {
+                        ret[p.id] = "waiting";
+                    });
+                    return ret;
+                }
+
+                isOver() {
+                    return (
+                    !this._inExecution &&
+                    this._jobQueue.length === 0 &&
+                    this._readyQueue.length === 0
+                    );
+                }
+
+                enterProcess(...process) {
+                    this._jobQueue.push(...process);
+                    this._syncQueues();
+                    this._syncInExecution();
+                    if (this._inExecution && this._inExecution.start == 0) {
+                        this._inExecution.tick();
+                    }
+                }
+
+                tick() {
+                    this._syncInExecution();
+                    this._clock++;
+                    this._syncQueues();
+                    this._syncInExecution();
+                    if (!this._inOverload && this._inExecution !== null) {
+                        this._inExecution.tick();
+                        if (
+                        (this._algorithm === "RR" || this._algorithm === "EDF") &&
+                        this._currentQuantum > 0
+                        )
+                        this._currentQuantum--;
+                    }
+                    if (this._currentOverload > 0) this._currentOverload--;
+                }
+
+                _syncQueues() {
+                    this._jobQueue.sort((a, b) => b.start - a.start);
+                    while (
+                    this._jobQueue.length > 0 &&
+                    this._jobQueue[this._jobQueue.length - 1].start <= this._clock
+                    ) {
+                        this._addToReadyQueue(this._jobQueue.pop());
+                    }
+                    this._syncReadyQueue();
+                }
+
+                _addToReadyQueue(process) {
+                    if (this._algorithm === "FIFO" || this._algorithm === "RR")
+                    this._readyQueue.unshift(process);
+                    else this._readyQueue.push(process);
+                }
+
+                _syncReadyQueue() {
+                    if (this._algorithm === "SJF")
+                    this._readyQueue.sort((a, b) => b.duration - a.duration);
+                    else if (this._algorithm === "EDF")
+                    this._readyQueue.sort((a, b) => b.deadline - a.deadline);
+                }
+
+                _syncInExecution() {
+                    if (this._currentOverload > 0) return;
+                    if (this._inOverload) {
+                        this._inOverload = false;
+                        this._currentQuantum = this._quantum;
+                        this._addToReadyQueue(this._inExecution);
+                        this._inExecution = null;
+                        this._syncReadyQueue();
+                        this._syncInExecution();
+                    }
+                    if (this._inExecution === null) {
+                        if (this._readyQueue.length > 0) {
+                            this._inExecution = this._readyQueue.pop();
+                        }
+                    } else {
+                        if (this._algorithm === "RR" || this._algorithm === "EDF") {
+                            if (this._inExecution.finished()) {
+                                this._inExecution = null;
+                                this._currentQuantum = this._quantum;
+                                this._syncInExecution();
+                            } else {
+                                if (this._currentQuantum === 0) {
+                                    this._currentOverload = this._overload;
+                                    this._inOverload = true;
+                                    this._syncInExecution();
+                                }
+                            }
+                        } else if (
+                        this._algorithm === "FIFO" ||
+                        this._algorithm === "SJF"
+                        ) {
+                            if (this._inExecution.finished()) {
+                                this._inExecution = null;
+                                this._syncInExecution();
+                            }
+                        }
+                    }
+                }
+            }
+            class Grant {
+                constructor(parent_id, ...process) {
+                    this.parent_id = parent_id;
+                    this.redraw(...process);
+                }
+
+                tick(new_status) {
+                    let node = document.createElement("td");
+                    node.setAttribute("class", "grant-cell grant-timebar-cell")
+                    node.innerText = this.current_time++;
+                    document.getElementById("grant-timebar").appendChild(node);
+                    let process_status = {};
+                    for (const [key, value] of Object.entries(new_status)) {
+                        process_status[`grant-process-id-${key}`] = value;
+                    }
+
+                    document
+                    .querySelectorAll(".grant-process-row")
+                    .forEach((grantProcess) => {
+                        let node = document.createElement("td");
+                        node.setAttribute(
+                        "class",
+                        `grant-cell grant-process-cell grant-process-cell-${process_status[grantProcess.id] || "none"}`,
+                        );
+                        grantProcess.appendChild(node);
+                    });
+                }
+
+                redraw(...process) {
+                    this.current_time = 0;
+                    document.getElementById(this.parent_id).innerHTML = "";
+                    this._create_empty();
+                    process.forEach((p) => this._insert_process(p));
+                }
+
+                _create_empty() {
+                    document.getElementById(this.parent_id).innerHTML = `
+<table id="grant">
+  <tbody id="grant-tbody">
+    <tr id="grant-timebar">
+      <td></td>
+    </tr>
+  </tbody>
+</table>`;
+                }
+
+                _insert_process(p) {
+                    let node = document.createElement("tr");
+                    node.id = `grant-process-id-${p.id}`;
+                    node.setAttribute("class", "grant-process-row");
+                    node.innerHTML = `<td class="grant-cell grant-process-label-cell">${p.id}</td>`;
+                    document.getElementById("grant-tbody").appendChild(node);
+                }
+            }
+
+            $(document).ready(function () {
+
+                $('.modal').modal();
+
+
+                $('#processos_container').css('height', '10px');
+
+
+                $('#numero_processos').on('change', function () {
+                    var numProcessos = $(this).val();
+                    var container = $('#processos_placeholder');
+                    $('#placeholder_text').hide();
+                    container.empty();
+
+                    for (var i = 1; i <= numProcessos; i++) {
+                        var processoHtml = `
+                    <div class="col m4 s12">
+                        <div class="card">
+                            <div class="card-content">
+                                <h6>Processo ` + i + `</h6>
+                                <div class="row">
+                                    <div class="input-field col s4">
+                                        <input id="chegada` + i + `" type="number" class="validate" required />
+                                        <label for="chegada` + i + `">Chegada</label>
+                                    </div>
+                                    <div class="input-field col s4">
+                                        <input id="tempo` + i + `" type="number" class="validate" required />
+                                        <label for="tempo` + i + `">Tempo</label>
+                                    </div>
+                                    <div class="input-field col s4">
+                                        <input id="deadline` + i + `" type="number" class="validate" required />
+                                        <label for="deadline` + i + `">Deadline</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    `;
+                        container.append(processoHtml);
+                    }
+
+
+                    $('#processos_container').css('height', '460px');
+
+                    M.updateTextFields();
+                });
+
+
+                $('#iniciar').on('click', function () {
+                    var n = $('#numero_processos').val();
+                    var q = $('#quantum').val();
+                    var s = $('#sobrecarga').val();
+                    var algoritmo = $('input[name="algoritmo"]:checked').val();
+                    var velocidade = $('#customRange1').val();
+
+                    if (n === '' || q === '' || s === '') {
+                        M.toast({ html: 'Por favor, preencha todos os campos de sistema!', classes: 'red' });
+                        return;
+                    }
+
+                    var processos = [];
+
+                    for (var i = 1; i <= n; i++) {
+                        var chegada = $(`#chegada${i}`).val();
+                        var tempo = $(`#tempo${i}`).val();
+                        var deadline = $(`#deadline${i}`).val();
+
+                        if (chegada === '' || tempo === '' || deadline === '') {
+                            M.toast({ html: 'Por favor, preencha todos os campos dos processos!', classes: 'red' });
+                            return;
+                        }
+
+                        processos.push(new Process(i, parseInt(chegada), parseInt(tempo), parseInt(deadline)));
+                    }
+
+
+                    console.log('Número de Processos:', n);
+                    console.log('Quantum:', q);
+                    console.log('Sobrecarga:', s);
+                    console.log('Algoritmo de Escalonamento:', algoritmo);
+                    console.log('Velocidade (Velocidade):', velocidade);
+                    console.log('Processos:', processos);
+
+
+                    const minVelocidade = 100;
+                    const maxVelocidade = 1000;
+                    velocidade = maxVelocidade - ((maxVelocidade - minVelocidade) * (velocidade / 100));
+
+
+                    let scheduler = new Scheduler(algoritmo, parseInt(q), parseInt(s));
+
+
+                    scheduler.enterProcess(...processos);
+
+
+                    let grant = new Grant("grant-container", ...processos);
+
+                    let next = () => {
+                        if (!scheduler.isOver()) {
+                            grant.tick(scheduler.status());
+                            scheduler.tick();
+                            setTimeout(next, velocidade);
+                        }
+                    };
+                    next();
+                });
+
+            });
+
+        </script>
+    </body>
+
+    </html>
