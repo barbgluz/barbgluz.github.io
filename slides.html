@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Apresentação do Escalonador de Processos</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/theme/black.css">
+    <style>
+        .tech-logo {
+            width: 40px;
+            vertical-align: middle;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="reveal">
+        <div class="slides">
+            <!-- Slide 1: Título -->
+            <section>
+                <h1>Escalonador de Processos</h1>
+                <p>Projeto para a disciplina de Sistemas Operacionais (MATA58)</p>
+            </section>
+
+            <!-- Slide 11: Código -->
+            <section>
+                <h2>Código</h2>
+                <p>As tecnologias utilizadas para o desenvolvimento do projeto foram:</p>
+                <ul>
+                    <li>
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" class="tech-logo" alt="HTML5">
+                        HTML
+                    </li>
+                    <li>
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" class="tech-logo" alt="CSS3">
+                        CSS
+                    </li>
+                    <li>
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jquery/jquery-original.svg" class="tech-logo" alt="jQuery">
+                        JQuery (JavaScript)
+                    </li>
+                </ul>
+            </section>
+
+            <!-- Slide 12: Frontend -->
+            <section>
+                <h2>Frontend</h2>
+                <p>O frontend permite a inserção dos dados necessários, criação dinâmica de processos, validação dos dados e exibição do escalonamento em um gráfico de Gantt.</p>
+            </section>
+
+            <section>
+                <p>Classe <strong>Grant</strong> é responsável por construir e atualizar o gráfico de Gantt.</p>
+                <ul>
+                    <li class="fragment">Inicializa o gráfico, criando uma tabela para o tempo de execução e os processos.</li>
+                    <li class="fragment">A função <strong>tick</strong> avança o tempo e atualiza o gráfico.</li>
+                    <li class="fragment">A função <strong>redraw</strong> reinicia o gráfico.</li>
+                </ul>
+            </section>
+
+            <!-- Slide 13: Backend -->
+            <section>
+                <h2>Backend: Classe Process</h2>
+                <p>A classe <strong>Process</strong> contempla os processos e possui os seguintes atributos:</p>
+                <ul>
+                    <li><strong>id:</strong> Identificador do processo</li>
+                    <li><strong>momento de chegada:</strong> Tempo em que o processo chega ao escalonador</li>
+                    <li><strong>duração:</strong> Tempo de execução do processo</li>
+                    <li><strong>tempo passado:</strong> Tempo já executado pelo processo</li>
+                    <li><strong>tempo de término:</strong> Momento em que o processo é finalizado</li>
+                </ul>
+            </section>
+            <section>
+                <p>Além disso, possui os seguintes métodos:</p>
+                <ul>
+                    <li class="fragment"><strong>tick:</strong> Incrementa o tempo passado</li>
+                    <li class="fragment"><strong>arrived:</strong> Indica que o processo chegou ao escalonador</li>
+                    <li class="fragment"><strong>finished:</strong> Indica que o processo foi finalizado</li>
+                </ul>
+            </section>
+
+            <!-- Slide 13: Classe Scheduler -->
+            <section>
+                <h3>Backend: Classe Scheduler</h3>
+                <p>A classe <strong>Scheduler</strong> contém os dados do escalonador de processos, incluindo os seguintes atributos:</p>
+                <ul>
+                    <li style="line-height: 1;"><small><strong>algoritmo:</strong> Algoritmo de escalonamento utilizado</small></li>
+                    <li style="line-height: 1;"><small><strong>quantum:</strong> Tempo máximo de execução para processos no Round Robin</small></li>
+                    <li style="line-height: 1;"><small><strong>sobrecarga:</strong> Tempo de sobrecarga de chaveamento</small></li>
+                    <li style="line-height: 1;"><small><strong>clock:</strong> Relógio do sistema</small></li>
+                    <li style="line-height: 1;"><small><strong>quantum atual:</strong> Quantum atual em execução</small></li>
+                    <li style="line-height: 1;"><small><strong>inExecution:</strong> Processo que está sendo executado</small></li>
+                    <li style="line-height: 1;"><small><strong>inOverload:</strong> Flag indicando sobrecarga</small></li>
+                    <li style="line-height: 1;"><small><strong>jobQueue:</strong> Fila de processos</small></li>
+                    <li style="line-height: 1;"><small><strong>readyQueue:</strong> Fila de processos prontos</small></li>
+                    <li style="line-height: 1;"><small><strong>completedProcesses:</strong> Lista de processos completos</small></li>
+                </ul>
+            </section>
+            <section>
+                <p>A classe também possui os seguintes métodos:</p>
+                <ul>
+                    <li style="line-height: 1;"><small><strong>status:</strong> Retorna o status atual do escalonador</small></li>
+                    <li style="line-height: 1;"><small><strong>isOver:</strong> Indica se o escalonamento foi finalizado</small></li>
+                    <li style="line-height: 1;"><small><strong>enterProcess:</strong> Adiciona um processo na fila de processos</small></li>
+                    <li style="line-height: 1;"><small><strong>tick:</strong> Incrementa o clock do sistema</small></li>
+                    <li style="line-height: 1;"><small><strong>syncQueues:</strong> Sincroniza as filas de processos</small></li>
+                    <li style="line-height: 1;"><small><strong>addToReadyQueue:</strong> Adiciona um processo na fila de prontos</small></li>
+                    <li style="line-height: 1;"><small><strong>syncReadyQueue:</strong> Sincroniza a fila de prontos</small></li>
+                    <li style="line-height: 1;"><small><strong>syncInExecution:</strong> Sincroniza o processo em execução</small></li>
+                    <li style="line-height: 1;"><small><strong>getAverageTurnaroundTime:</strong> Retorna o tempo médio de turnaround do escalonamento</small></li>
+                </ul>
+            </section>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.js"></script>
+    <script>
+        Reveal.initialize();
+    </script>
+</body>
+</html>
