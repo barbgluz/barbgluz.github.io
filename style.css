@@ -20,14 +20,18 @@
   --bg-panel:     #040d06;
   --bg-input:     #020b04;
   --border:       #00cc33;
-  --border-dim:   #005511;
+  --border-dim:   #02d050;
   --text:         #00ff41;
-  --text-dim:     #00993a;
+  --text-dim:     #01f05d;
   --text-faint:   #005522;
   --font-mono:    'Share Tech Mono', monospace;
   --font-display: 'VT323', monospace;
   --glow:         0 0 6px #00ff41, 0 0 12px #00cc3388;
   --glow-dim:     0 0 4px #00cc3344;
+}
+
+a {
+  color: var(--green);
 }
 
 html, body {
@@ -677,5 +681,282 @@ p {
     height: 100vh;
     width: 100vw;
     border: none;
+  }
+}
+/* =============================================
+   RESPONSIVIDADE COMPLETA
+   ============================================= */
+
+/* Ajustes globais */
+html, body {
+  overflow: auto;
+}
+
+body {
+  min-height: 100vh;
+  padding: 10px;
+}
+
+/* Terminal adaptável */
+.terminal-window {
+  width: 100%;
+  max-width: 1400px;
+  height: min(95vh, 900px);
+}
+
+/* Painéis com scroll correto */
+.left-panel,
+.right-panel,
+.panel-content,
+.placeholder-panel {
+  min-height: 0;
+}
+
+.panel-content,
+.placeholder-panel,
+.bio-bskillsk {
+  overflow-y: auto;
+}
+
+/* Melhor quebra de texto */
+p,
+.acc-title,
+.detail-value,
+.contact-row,
+.priority {
+  word-break: break-word;
+}
+
+/* Tabs mais amigáveis */
+.tab {
+  flex-shrink: 0;
+}
+
+/* PDF responsivo */
+#tab-cv object {
+  width: 100%;
+  height: 75vh;
+  min-height: 400px;
+}
+
+/* ASCII art adaptável */
+.ascii-art {
+  font-size: clamp(1px, 0.18vw, 2px);
+  line-height: 1;
+  overflow: hidden;
+}
+
+/* Foto menor em telas médias */
+.officer-photo {
+  width: 100px;
+  height: 120px;
+}
+
+/* =============================================
+   TABLETS
+   ============================================= */
+@media (max-width: 1024px) {
+
+  .main-layout {
+    grid-template-columns: 1fr 300px;
+  }
+
+  .bio-bskillsk {
+    font-size: 0.9rem;
+  }
+
+  .placeholder-panel,
+  .panel-content {
+    padding: 12px;
+  }
+}
+
+/* =============================================
+   MOBILE
+   ============================================= */
+@media (max-width: 860px) {
+
+  html, body {
+    overflow: auto;
+  }
+
+  body {
+    padding: 0;
+  }
+
+  .terminal-window {
+    width: 100vw;
+    height: 100vh;
+    border: none;
+  }
+
+  .main-layout {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  /* Painel direito sobe */
+  .right-panel {
+    order: -1;
+    max-height: unset;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .left-panel {
+    border-right: none;
+    flex: 1;
+    min-height: 0;
+  }
+
+  /* Card mais compacto */
+  .officer-card {
+    align-items: center;
+  }
+
+  .officer-photo {
+    width: 80px;
+    height: 100px;
+  }
+
+  .detail-value {
+    font-size: 0.9rem;
+  }
+
+  .bio-bskillsk {
+    padding: 12px;
+    font-size: 0.82rem;
+    line-height: 1.5;
+  }
+
+  /* Tabs scrolláveis horizontalmente */
+  .tab-bar {
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+  }
+
+  .tab {
+    font-size: 0.95rem;
+    padding: 8px 12px;
+  }
+
+  /* Conteúdo */
+  .panel-content {
+    padding: 10px;
+  }
+
+  .placeholder-panel {
+    padding: 10px;
+    gap: 10px;
+  }
+
+  .contact-row,
+  .accordion-header {
+    padding: 10px;
+  }
+
+  .accordion-body p {
+    font-size: 0.9rem;
+  }
+
+  .priority {
+    font-size: 0.9rem;
+  }
+
+  /* Footer */
+  .right-footer {
+    text-align: center;
+    font-size: 0.7rem;
+  }
+
+  /* PDF */
+  #tab-cv object {
+    height: 65vh;
+  }
+
+  /* ASCII menor */
+  .ascii-art {
+    font-size: 1px;
+  }
+}
+
+/* =============================================
+   TELAS MUITO PEQUENAS
+   ============================================= */
+@media (max-width: 480px) {
+
+  .version-tag {
+    font-size: 0.8rem;
+  }
+
+  .top-bar {
+    padding: 4px 8px;
+  }
+
+  .tab {
+    font-size: 0.82rem;
+    padding: 8px 10px;
+  }
+
+  .detail-label {
+    font-size: 0.7rem;
+  }
+
+  .detail-value {
+    font-size: 0.8rem;
+  }
+
+  .bio-bskillsk {
+    font-size: 0.75rem;
+  }
+
+  .placeholder-panel,
+  .accordion-body p,
+  .contact-row {
+    font-size: 0.82rem;
+  }
+
+  .acc-title {
+    font-size: 0.85rem;
+  }
+
+  .status-bar,
+  .right-footer {
+    font-size: 0.7rem;
+  }
+
+  .officer-photo {
+    width: 70px;
+    height: 85px;
+  }
+
+  .ascii-art {
+    font-size: 1.7px;
+  }
+}
+
+/* =============================================
+   ULTRAWIDE / 4K
+   ============================================= */
+@media (min-width: 1800px) {
+
+  .terminal-window {
+    max-width: 1700px;
+    max-height: 1000px;
+  }
+
+  .tab {
+    font-size: 1.2rem;
+  }
+
+  .bio-bskillsk,
+  .accordion-body p,
+  .placeholder-panel {
+    font-size: 1.1rem;
+  }
+
+  .detail-value {
+    font-size: 1.2rem;
   }
 }
