@@ -1,97 +1,379 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Convite de Aniversário</title>
-  <style>
-    body {
-      background-color: #1e1e1e;
-      color: #d4d4d4;
-      font-family: 'Courier New', Courier, monospace;
-      padding: 20px;
-      font-size: 22px;
-    }
-
-    .terminal {
-      background-color: #1e1e1e;
-      border-radius: 8px;
-      padding: 20px;
-      border: 2px solid #3c3c3c;
-      width: fit-content;
-      margin: auto;
-    }
-
-    .green {
-      color: #6A9955;
-    }
-
-    .purple {
-      color: #C586C0;
-    }
-
-    .blue {
-      color: #569CD6;
-    }
-
-    .orange {
-      color: #DCDCAA;
-    }
-
-    pre {
-      margin: 0;
-    }
-
-     .calendar-button a {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      background-color: #4285F4;
-      color: white;
-      padding: 14px 24px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-family: Arial, sans-serif;
-      font-weight: bold;
-      font-size: 16px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-      transition: background-color 0.3s ease, transform 0.2s ease;
-    }
-  </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bárbara Luz</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  
+  <div class="scanline-overlay"></div>
+  <div class="crt-flicker"></div>
+  
+  <div class="terminal-window">
+    
+    <!-- Top Bar -->
+    <div class="top-bar">
+      <span class="version-tag">BÁRBARA LUZ</span>
+      <div class="top-bar-controls">
+        <span class="ctrl-dot"></span>
+        <span class="ctrl-dot"></span>
+        <span class="ctrl-dot"></span>
+      </div>
+    </div>
+    
+    <!-- Main Layout -->
+    <div class="main-layout">
+      
+      <!-- LEFT PANEL -->
+      <div class="left-panel">
+        
+        <!-- Tab Bar -->
+        <nav class="tab-bar">
+          <button class="tab active" data-tab="about-me">ABOUT ME</button>
+          <button class="tab" data-tab="professional">PROFESSIONAL EXPERIENCE</button>
+          <button class="tab" data-tab="skills">SKILLS</button>
+          <button class="tab" data-tab="academic">ACADEMIC</button>
+          <button class="tab" data-tab="awards">AWARDS</button>
+          <button class="tab" data-tab="cv">CV</button>
+          <button class="tab" data-tab="volunteering">VOLUNTEERING</button>
+        </nav>
+        
+        <!-- about-me Panel -->
+        <div class="panel-content" id="tab-about-me">
+          <div class="about-me-log" id="about-meLog">
+            <p>
+              I've been writing code since 2017, when I first started building web projects in Salvador. What began as curiosity turned into a career spanning fintech, cybersecurity, and government systems — and I'm still just getting started.
+            </p>
+            <br>
+            <p>
+              My core stack is PHP, with deep experience in Laravel and Hyperf, but over the years I've worked across Python, Node.js, React, Vue, and Angular. I care about the craft: clean architecture, meaningful test coverage, APIs that are actually pleasant to integrate with. At PicPay, I helped build and optimize one of Brazil's most advanced P2P and P2B lending platforms, keeping a critical microservice at 98% test coverage while the system scaled under real pressure. At Segura, I moved into privileged access management — building the kind of backend infrastructure where security isn't an afterthought, it's the whole point.
+            </p>
+            <br>
+            <p>
+              Before that, at ACP Group, I worked on systems used by the Government of the State of Bahia to manage over 50,000 institutional accounts. That taught me a lot about what it means to build software that people actually depend on — not just users, but public servants, institutions, entire workflows.
+            </p>
+            <br>
+            <p>
+              But my story isn't only about what I've shipped. I've always believed that good engineers give back. I've taught C++ and data structures to elementary and secondary school students through UFBA's community outreach program — watching someone understand recursion for the first time never gets old. I've mentored students through data structures and algorithms coursework, helped coordinate one of Salvador's major tech conferences from the ground up, and led quality strategy and OKR planning at InfoJr, a junior enterprise at my university.
+            </p>
+            <br>
+            <p>
+              I've won three hackathons — including first place for a platform designed to protect victims of domestic violence, and second place for an augmented reality experience bringing Salvador's historic center to life. Those projects remind me why I do this work: technology should solve real problems for real people.
+              I hold certifications in web accessibility and cybersecurity, speak four languages, and I'm finishing my Computer Science degree at UFBA in July 2026. I'm driven by hard problems, scalable systems, and the belief that the best code is written by people who actually care about what it does.
+            </p>
+          </div>
+        </div>
+        
+        <!-- Other Panels (placeholder content) -->
+        <div class="panel-content hidden" id="tab-professional">
+          <div class="placeholder-panel">
+            <p>// PROFESSIONAL EXPERIENCE — 5 ENTRIES LOADED</p>
+            
+            <div class="contact-row accordion-row open">
+              <div class="accordion-header">
+                <span class="tag">SEGURA</span>
+                <span class="acc-title">SOFTWARE ENGINEER</span>
+                <span class="acc-arrow">▶</span>
+              </div>
+              <div class="accordion-body">
+                <p>May 2025 – Feb 2026 · São Paulo, Brazil</p>
+                <p>Development of corporate cybersecurity solutions focused on Privileged Access Management (PAM). Built secure, scalable backend systems in PHP, designed APIs integrating authentication and access control, and participated in architecture decisions across cross-functional teams.</p>
+              </div>
+            </div>
+            
+            <div class="contact-row accordion-row">
+              <div class="accordion-header">
+                <span class="tag">PICPAY</span>
+                <span class="acc-title">SOFTWARE ENGINEER</span>
+                <span class="acc-arrow">▶</span>
+              </div>
+              <div class="accordion-body">
+                <p>Oct 2021 – Mar 2024 · São Paulo, Brazil</p>
+                <p>Built and optimized one of Brazil's most advanced P2P and P2B lending platforms. Maintained 98% test coverage on a critical microservice using PHPUnit. Implemented Kafka for real-time messaging between microservices and used Harness for CI/CD pipeline automation.</p>
+              </div>
+            </div>
+            
+            <div class="contact-row accordion-row">
+              <div class="accordion-header">
+                <span class="tag">ACP GROUP</span>
+                <span class="acc-title">SOFTWARE DEVELOPMENT ANALYST</span>
+                <span class="acc-arrow">▶</span>
+              </div>
+              <div class="accordion-body">
+                <p>Jan 2021 – Nov 2021 · Salvador, Brazil</p>
+                <p>Developed and maintained systems used by the Government of the State of Bahia to manage over 50,000 institutional accounts. Built frontend interfaces with Vue.js and integrated Microsoft Active Directory and PowerShell automation.</p>
+              </div>
+            </div>
+            
+            <div class="contact-row accordion-row">
+              <div class="accordion-header">
+                <span class="tag">STARTONAPP</span>
+                <span class="acc-title">WEB DEVELOPER</span>
+                <span class="acc-arrow">▶</span>
+              </div>
+              <div class="accordion-body">
+                <p>Feb 2019 – Jun 2019 · Salvador, Brazil</p>
+                <p>Backend development using Python and Flask. Built responsive frontend interfaces with Angular 2+. Contributed to a Brazilian TV broadcaster's website, improving streaming content delivery and user experience.</p>
+              </div>
+            </div>
+            
+            <div class="contact-row accordion-row">
+              <div class="accordion-header">
+                <span class="tag">EQUILIBRA DIGITAL</span>
+                <span class="acc-title">WEB DEVELOPER</span>
+                <span class="acc-arrow">▶</span>
+              </div>
+              <div class="accordion-body">
+                <p>Oct 2017 – Mar 2019 · Salvador, Brazil</p>
+                <p>Developed web solutions aligned with client objectives. Facilitated software development by organizing brainstorming sessions, breaking tasks into milestones and coordinating project workflows.</p>
+              </div>
+            </div>
+            
+            <div class="contact-row dim">[ SHOWING 5 OUT OF 5 ]</div>
+          </div>
+        </div>
+        <div class="panel-content hidden" id="tab-skills">
+          <div class="placeholder-panel">
+            <p>// Backend</p>
+            <span class="tag">PHP (Laravel / HyperF)</span>
+            <span class="tag">PYTHON (Flask)</span>
+            <span class="tag">JAVASCRIPT (Node.js)</span>
+            <br>
+            <p>// Frontend</p>
+            <span class="tag">VUE.JS</span>
+            <span class="tag">ANGULAR</span>
+            <span class="tag">JAVASCRIPT</span>
+            <br>
+            <p>// Databases</p>
+            <span class="tag">SQL</span>
+            <span class="tag">NOSQL</span>
+            <br>
+            <p>// DevOps & Tools</p>
+            <span class="tag">GIT</span>
+            <span class="tag">DOCKER</span>
+            <span class="tag">KAFKA</span>
+            <span class="tag">CI/CD</span>
+            <br>
+            <p>// Architecture & Engineering</p>
+            <span class="tag">REST APIs</span>
+            <span class="tag">MICROSERVICES</span>
+            <span class="tag">SYSTEMS INTEGRATION</span>
+            <span class="tag">SCALABLE ARCHITECTURE</span>
+            <span class="tag">CODE REVIEW</span>
+            <span class="tag">AUTOMATED TESTING</span>
+            <span class="tag">CLEAN CODE</span>
+            <span class="tag">DESIGN PATTERNS</span>
+            <span class="tag">OOP</span>
+          </div>
+        </div>
+        <div class="panel-content hidden" id="tab-academic">
+          <div class="placeholder-panel">
+            <p>// academic — 3 FILES</p>
+            <div class="contact-row">BACHELORS IN COMPUTER SCIENCE @ FEDERAL UNIVERSITY OF BAHIA</div>
+            <div class="contact-row accordion-row">
+              <div class="accordion-header">
+                <span class="acc-title">MEMBER OF TOLOCA RESEARCH GROUP</span>
+                <span class="acc-arrow">▶</span>
+              </div>
+              <div class="accordion-body">
+                <p>ToLOCA Research Group is a research group at the Institute of Computing of the Federal University of Bahia focused on the theoretical foundations of Computer Science. Founded in 2019, the group brings together researchers and students interested in areas such as Graph Theory, Combinatorics, Algorithms, Optimization, Logic, and their applications in Computing and Artificial Intelligence. The group also promotes academic seminars, collaborative research projects, and scientific publications in partnership with Brazilian and international institutions.</p>
+              </div>
+            </div>
+            <div class="contact-row accordion-row">
+              <div class="accordion-header">
+                <span class="acc-title">UNDERGRADUATE RESEARCH PROJECT ON OPTIMISATION</span>
+                <span class="acc-arrow">▶</span>
+              </div>
+              <div class="accordion-body">
+                <p>Undergraduate Research Project focused on optimizing the performance and accessibility of the GainTime Framework, aiming to promote a lighter and more inclusive web experience. Responsible for improving loading times and implementing accessibility features across the frontend framework, following web accessibility best practices to enhance usability for different user profiles. The project was conducted under the supervision of Professor Maycon Leone Maciel Peixoto at the Federal University of Bahia</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="panel-content hidden" id="tab-awards">
+          <div class="placeholder-panel">
+            <div class="priority">[ 🥇 1ST PLACE ] BAHIA CHALLENGES HACKATHON
+                <p>
+                  SECURED 1ST PLACE IN A HACKATHON BY CONCEPTUALISING AND DESIGNING A WEB PLATFORM AIMED AT AUTOMATING THE COLLECTION, STORAGE, AND ANALYSIS OF SOCIOECONOMIC DATA FOR WOMEN ASSISTED BY THE POLICE FORCE RONDA MARIA DA PENHA, DEDICATED TO PROTECTING VICTIMS OF DOMESTIC VIOLENCE. THIS INITIATIVE CONTRIBUTES TO THE DEVELOPMENT OF TARGETED PUBLIC POLICIES TO SUPPORT THIS VULNERABLE POPULATION.
+                </p>
+            </div>
+            <div class="priority">[ 🥈 2ND PLACE ] HACKATHON + SALVADOR
+                <p>
+                  ATTAINED 2ND PLACE IN A HACKATHON BY CRAFTING AND DEVELOPING A GAME OF RIDDLES LEVERAGING AUGMENTED REALITY TO PROMOTE USER INTERACTION WITH THE HISTORICAL CENTRE OF THE CITY OF SALVADOR. THIS IMMERSIVE EXPERIENCE FACILITATED LEARNING ABOUT THE CITY’S HISTORY WHILE ENGAGING USERS IN AN INTERACTIVE AND EDUCATIONAL ADVENTURE.
+                </p>
+            </div>
+            <div class="priority">[ 🥉 3RD PLACE ] BAHIA CHALLENGES HACKATHON - FAMILY FARMING EDITION
+                <p>
+                  ACHIEVED 3RD PLACE IN A HACKATHON BY DESIGNING AND DEVELOPING A MANAGEMENT SYSTEM FOR THE MARKETING AND DELIVERY OF FAMILY FARMING PRODUCTS. THIS PROJECT AIMED TO STREAMLINE PROCESSES AND ENHANCE EFFICIENCY IN THE DISTRIBUTION OF AGRICULTURAL PRODUCTS, CONTRIBUTING TO THE GROWTH AND SUSTAINABILITY OF FAMILY FARMING INITIATIVES.
+                </p>
+            </div>
+          </div>
+        </div>
+        <div class="panel-content hidden" id="tab-cv">
+          <div class="placeholder-panel">
+          <object
+            data="./cv.pdf#view=FitH&toolbar=0&navpanes=0"
+            type="application/pdf"
+            width="100%"
+            height="700px"
+          >
+            <p>It appears you don't have a PDF plugin for this browser.
+            No biggie... you can <a href="cv.pdf">click here to download the PDF file.</a></p>
+            </object>
+          </div>
+        </div>
+        <div class="panel-content hidden" id="tab-volunteering">
+          <div class="placeholder-panel volunteering-panel">
+            <div class="contact-row accordion-row open">
+              <div class="accordion-header">
+                <span class="acc-title">TEACHING ASSISTANT - GRAPH THEORY</span>
+                <span class="acc-arrow">▶</span>
+              </div>
+              <div class="accordion-body">
+                <p>Teaching Assistant for the Graph Theory course, providing personalized support to students by clarifying concepts and answering questions related to graph algorithms, combinatorics, and theoretical foundations. Assisted with reviewing exercises and assignments, offering constructive feedback to support students’ academic development and strengthen their problem-solving skills.</p>
+              </div>
+            </div>
 
-<div class="terminal">
-<pre>
-<span class="green">**************************************************************</span>
-<span class="green">*                   KK EAE PESSOAL,                          *</span>
-<span class="green">*           🎉 BORA COMEMORAR O MEU NIVER 🎉                 *</span>
-<span class="green">**************************************************************</span>
+            <div class="contact-row accordion-row">
+              <div class="accordion-header">
+                <span class="acc-title">TEACHING ASSISTANT - DATA STRUCTURES AND ALGORITHMS</span>
+                <span class="acc-arrow">▶</span>
+              </div>
+              <div class="accordion-body">
+                <p>Monitoring the Data Structures and Algorithms discipline, providing personalized assistance to students, offering support and clarifying doubts related to the content, helping to correct lists of exercises and assignments and providing constructive feedback to assist in students' academic development.</p>
+              </div>
+            </div>
 
-        I I I I I I
-       |:F:e:l:i:z:|
-     __|___________|__
-    |^^^^^^^^^^^^^^^^^|
-    |   :N:i:v:e:r:!  |
-    |                 |
-    ~~~~~~~~~~~~~~~~~~~
+            <div class="contact-row accordion-row">
+              <div class="accordion-header">
+                <span class="acc-title">QUALITY MANAGER @ INFOJR UFBA</span>
+                <span class="acc-arrow">▶</span>
+              </div>
+              <div class="accordion-body">
+                <p>Development and implementation of strategic plans that aim to improve processes and procedures related to quality. Tasked with establishing and monitoring Objectives and Key Results (OKRs) to ensure alignment with organizational objectives, using tools such as SWOT analysis, identifying areas for improvement and growth opportunities, guiding informed decision-making to drive performance and company competitiveness.</p>
+              </div>
+            </div>
 
-<span class="blue" style="font-size: 36px;"><strong>Bárbara Luz</strong></span>
-<span class="green">def</span> <span class="blue">convidar_galera</span>():
-    <span class="purple">evento</span> = <span class="orange">"27 anos de Bárbara"</span>
-    <span class="purple">data</span> = <span class="orange">"Sábado, 12 de Julho de 2025"</span>
-    <span class="purple">local</span> = <span class="orange">"Bar das Putas"</span>
-    <span class="purple">horário</span> = <span class="orange">"18h30"</span>
-    <span class="green">return</span> <span class="orange">"Add aí na agenda e vamo q vamo!"</span>
-</pre>
+            <div class="contact-row accordion-row">
+              <div class="accordion-header">
+                <span class="acc-title">GENERAL CHAIR @ SEMCOMP 2017</span>
+                <span class="acc-arrow">▶</span>
+              </div>
+              <div class="accordion-body">
+                <p>Leadership of several crucial activities to ensure the success of the event, including managing the schedule and content of the lectures, negotiating with sponsors for strategic partnerships, defining and controlling the budget, coordinating publicity and marketing strategies, responsible for logistical coordination, ensuring the infrastructure required for the event and post-event evaluation to identify areas for improvement.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Bottom Status Bar -->
+        <div class="status-bar">
+          <span class="status-signal blink-slow">LOW SIGNAL</span>
+        </div>
+        
+      </div>
+      
+      <!-- RIGHT PANEL -->
+      <div class="right-panel">
+        <div class="right-header">INFO:</div>
+        
+        <!-- Officer Card -->
+        <div class="officer-card">
+          <div class="officer-photo-wrap">
+            <div class="officer-photo">
+              <div class="photo-scanline"></div>
+              <div class="photo-noise"></div>
+              <!-- Placeholder face using CSS art -->
+              <pre class="ascii-art">
+@@@@@@@@@@@@@@@@@@@@@@@@@%%%%#*+--::::::::::=-::.:-.::::-:*#-##%%%%%%%%%%%%%########*************+++
+@@@@@@@@@@@@@@@@@@@@@@@@@%#*==--:-::::::::.:.:..:....::*----=+=*%#%%%%%%%%########**********++++++++
+@@@@@@@@@@@@@@@@@@@@@@@%#++=-:::::::::::.:..............:..::-+#%%%%%%%#########*********+++++++++++
+@@@@@@@@@@@@@@@@@@@@@@%*==-::::::::::::::.................:.::::-+*%#%#######*********++++++++++++++
+@@@@@@@@@@@@@@@@@@@@%#+==-:::::::::::::.:.::....................::-+*######*******++++++++++++++++++
+@@@@@@@@@@@@@@@@@@%%#*+-::::::::::::.:...::......................::::+***********+++++++++++++++++++
+@@@@@@@@@@@@@@@@@*##-=-:::::::::::.::......:...................::::.::-:-++**++++++++++++++++++++++=
+@@@@@@@@@@@@@@@%*-=---::::::::...:...:......::.:.......................-:=--+++++++++++++++++++++===
+@@@@@@@@@@@@@@@*=-:--::::::---::::.:.:::.......:.....................::.::-:=++++++++++++++++++++===
+@@@@@@@@@@@@@@###--::::-:---======--::::::.......:.......:.................:--=:+++++++++++++++++===
+@@@@@@@@@@@@@%#=-::::::--++******++=-:::.:..................................::::===++++++++++++++===
+@@@@@@@@@@@@%%*---::::-=+********+++==:::::...................:..............:.---=-==++++++++++====
+@@@@@@@@@@@@%#--:--:::=***********+*+++=::::...................................:-:=:==-=++++++++====
+@@@@@@@@@@@@%==---+=--******####*****++==-:::.......:...........:.............--.----==+=+++++++====
+@@@@@@@@@@@@@%#--::--+*****######****+++=--:::...............................:..:.:----=++++++======
+@@@@@@@@@@@@%%+-:::-:+*****######*****+++=-::...................................::.=======++++++====
+@@@@@@@@@@@%@*=::::::+***#########*****+++==:..:..:.............................:----==+=+++++======
+@@@@@@@@@@@@%%=-:::::+***##########*****=-::...:..:.............................:::-:-=++++=========
+@@@@@@@@@@@@%*+::::::+**+===+**##****+-::=**-:...................................:..=-=-==+++=======
+@@@@@@@@@@@@%*-::.:::*****+++******+=--=+-..:...:................................:.:::==============
+@@@@@@@@@@@@#=-:::=::**+=*---+*****=::-=++---.:::..:..............................:.-===============
+@@@@@@@@@@@@#=:-=:-:-*************+-:-=+*++==-.-:...................................:===============
+@@@@@@@@@%@%#+-+::-:=**#***###****+-::=******=-::...................................:===++==========
+@@@@@@@@@@%#*---:-::=*########****+-::-+****=:.::....................................:=++===========
+@@@@@@@@@@%%+-::=++::*#####*******+=---:+**--:.:.....................:.......:.......:-=============
+@@@@@@@@@%%*=--:==::.=*#***+******+---:.:=*=-::....:.:................................-=============
+@@@@@@@@@%%++-=---:...***=-******=-:::--=====:.........:.............:.............:...:============
+@@@@@@@@@%%#-++::::...=**====*******+===-:::-:::.......:...........................:...-============
+@@@@@@@@@%++--::=::....=**+**++*##*++*=-:-====-....:.................................:..:===========
+@@@@@@@%%%===----:......:*****++***+++=----=-......:....................................-===========
+@@@@@@@@%#=*::--::........=******++====-----:::.........................................-===========
+@@@@@@@%%+*+=-:::..........:+********++==-:::.........................................--::==========
+@@@@@@@@#*#+=::-:..........:-=********++=:.................:.........................:.:.-==========
+@@@@@%@@%+#*--:::.......:..:-=+*******+=:....:.........................................-=--=========
+@@@@@@%@%+-+-::::.......::..-==++++++=-:::......:..................................:::.:-:--========
+@@@@@%%#%#+*-::=......:.::..:===++++===--::.............................................============
+@@@@@%%##+*+-:-*:.....::.::::-==+++++===--::....:::.....................................:===========
+@@@%%%#+#**=-:++::.:..:::.:-:::-==++++===--:.:.::......:.................................===========
+@@@@%%%%*=*-:-==-::..:....:::::-==========-::.:.:.......................................:-=======--=
+@@@@@#%%##+--+=--:..:.....:::::-=======++=-=-::..:....................................:.:---==--=---
+@@@@@%#***-::+=-=::.:::...:::::-----===++++=-=--.:...............................::...:.:---=-------
+@@@@@%#**=+:--**=--.:==:.+=-:::--====+++++++*+..............................:......:...:.:----------
+@@@@@@*-**#-::--=-.::==.:.=-:::--===+++++++-:-.:.................................:.:..:-.--==-------
+@@@@*%+=+=*=--:-==-.--==:.=-:::::-===+++++#+-..:...:.......::.............::::....:-...--.----------
+@@@%*=+%***+-::=++=-:=++***=::----===++++##=*:......:-.....:..............:::::.:--.:.:-::----------
+@%%%%@%%%%**=--=+*-:-=++**#+-:-====+++++@::.-:.:--...==-:...::...........:::::---.::::--------------
+@@%@%%##%%#**+=--*+::=-**###=::-===+++%%#*=:-..::-:..:=....:..............:::---:-:::::-------------
 
-<div class="calendar-button" style="margin-top: 1rem;">
-  <a 
-    href="https://www.google.com/calendar/render?action=TEMPLATE&text=Niver+de+B%C3%A1rbara+Luz&dates=20250712T213000Z/20250712T233000Z&details=Rumbó&sf=true&output=xml"
-    target="_blank"
-  >
-    📅 Adicionar à Agenda do Google
-  </a>
-</div>
-
+              </pre>
+            </div>
+          </div>
+          
+          <div class="officer-details">
+            <div class="detail-row">
+              <span class="detail-label">NAME:</span>
+              <span class="detail-value">BÁRBARA LUZ</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">PRONOUNS:</span>
+              <span class="detail-value">SHE/HER</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">LOCATION:</span>
+              <span class="detail-value">SALVADOR, BAHIA, BRAZIL</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Bio Bskillsk -->
+        <div class="bio-bskillsk">
+          <p>
+            PASSIONATE RESULTS-DRIVEN SOFTWARE ENGINEER SPECIALISING IN THEORETICAL COMPUTER SCIENCE, ALGORITHMS, OPTIMISATION AND GRAPH THEORY. WITH A STRONG FOUNDATION IN PHP FRAMEWORKS LIKE LARAVEL AND HYPERF, COUPLED WITH EXTENSIVE EXPERIENCE IN BUILDING AND OPTIMISING COMPLEX SYSTEMS, THRIVING IN LEADING-EDGE PROJECTS.
+          </p>
+          <br>
+          <p>DEEPLY COMMITTED TO GIVING BACK TO THE COMMUNITY AND EMPOWERING THE NEXT GENERATION OF TECH ENTHUSIASTS WHETHER THROUGH HACKATHONS, WORKSHOPS, OR ONE-ON-ONE MENTORSHIPS. </p>
+          <br>
+          <p>PASSIONATE ABOUT SHARING MY KNOWLEDGE AND INSPIRING OTHERS TO PURSUE THEIR INTERESTS IN TECHNOLOGY.</p>
+        </div>
+        
+        <!-- Right Footer -->
+        <div class="right-footer">PROPERTY OF BALTIMORE POLICE DEPARTMENT</div>
+      </div>
+      
+    </div>
+  </div>
+  
+  <script src="script.js"></script>
 </body>
 </html>
