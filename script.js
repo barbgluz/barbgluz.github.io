@@ -29,40 +29,6 @@ tabs.forEach(tab => {
 // ─── CHAT SEND ─────────────────────────────────
 const chatLog   = document.getElementById('chatLog');
 const chatInput = document.getElementById('chatInput');
-const sendBtn   = document.getElementById('sendBtn');
-
-function sendMessage() {
-  const text = chatInput.value.trim();
-  if (!text) return;
-
-  const line = document.createElement('div');
-  line.className = 'chat-line self';
-  line.innerHTML = `<span class="sender">YOU:</span><span class="msg">${escapeHTML(text.toUpperCase())}</span>`;
-  chatLog.appendChild(line);
-  chatLog.scrollTop = chatLog.scrollHeight;
-
-  chatInput.value = '';
-  chatInput.focus();
-
-  // Simulate a delayed reply
-  setTimeout(() => {
-    const replies = [
-      "COPY THAT.",
-      "UNDERSTOOD. STANDING BY.",
-      "WHAT'S YOUR 20?",
-      "NEGATIVE. REPEAT LAST.",
-      "10-4. OVER.",
-      "WHO AUTHORIZED THIS?",
-      "RADIO SILENCE FROM HERE.",
-    ];
-    const reply = replies[Math.floor(Math.random() * replies.length)];
-    const replyLine = document.createElement('div');
-    replyLine.className = 'chat-line other';
-    replyLine.innerHTML = `<span class="sender">J. O'NEIL:</span><span class="msg">${reply}</span>`;
-    chatLog.appendChild(replyLine);
-    chatLog.scrollTop = chatLog.scrollHeight;
-  }, 900 + Math.random() * 700);
-}
 
 // ─── ACCORDIONS ──────────────────────────────
 document.querySelectorAll('.accordion-row').forEach(row => {

@@ -741,7 +741,7 @@ p,
 
 /* ASCII art adaptável */
 .ascii-art {
-  font-size: clamp(1px, 0.18vw, 2px);
+  font-size: 2.5px;
   line-height: 1;
   overflow: hidden;
 }
