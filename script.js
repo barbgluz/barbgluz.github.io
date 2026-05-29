@@ -41,8 +41,6 @@ document.querySelectorAll('.accordion-row').forEach(row => {
   });
 });
 
-sendBtn.addEventListener('click', sendMessage);
-
 chatInput.addEventListener('keydown', e => {
   if (e.key === 'Enter' && !e.shiftKey) {
     e.preventDefault();

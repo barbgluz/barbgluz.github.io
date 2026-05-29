@@ -655,6 +655,12 @@ p {
   max-height: 300px;
 }
 
+.social-links a {
+  display: flex;
+  gap: 10px;
+  margin-block: 10px;
+}
+
 /* ─── ANIMATIONS ─────────────────────────────── */
 @keyframes blinkText {
   0%, 100% { opacity: 1; }
