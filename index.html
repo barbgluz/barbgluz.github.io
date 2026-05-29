@@ -15,7 +15,7 @@
     
     <!-- Top Bar -->
     <div class="top-bar">
-      <span class="version-tag">BÁRBARA LUZ</span>
+      <h1 class="version-tag">BÁRBARA LUZ</h1>
       <div class="top-bar-controls">
         <span class="ctrl-dot"></span>
         <span class="ctrl-dot"></span>
@@ -30,18 +30,66 @@
       <div class="left-panel">
         
         <!-- Tab Bar -->
-        <nav class="tab-bar">
-          <button class="tab active" data-tab="about-me">ABOUT ME</button>
-          <button class="tab" data-tab="professional">PROFESSIONAL EXPERIENCE</button>
-          <button class="tab" data-tab="skills">SKILLS</button>
-          <button class="tab" data-tab="academic">ACADEMIC</button>
-          <button class="tab" data-tab="awards">AWARDS</button>
-          <button class="tab" data-tab="cv">CV</button>
-          <button class="tab" data-tab="volunteering">VOLUNTEERING</button>
+        <nav class="tab-bar" role="tablist" aria-label="Portfolio Sections">
+          <button 
+            class="tab active" data-tab="about-me" role="tab"
+            aria-selected="true"
+            aria-controls="tab-about-me"
+            id="about-me-tab">
+              <h2>ABOUT ME</h2>
+          </button>
+            
+          <button 
+            class="tab" data-tab="professional" role="tab"
+            aria-selected="true"
+            aria-controls="tab-professional"
+            id="tab-professional">
+              <h2>PROFESSIONAL EXPERIENCE</h2>
+          </button>
+            
+          <button 
+            class="tab" data-tab="skills" role="tab"
+            aria-selected="true"
+            aria-controls="tab-skills"
+            id="skills-tab">
+              <h2>SKILLS</h2>
+          </button>
+            
+          <button 
+            class="tab" data-tab="academic" role="tab"
+            aria-selected="true"
+            aria-controls="tab-academic"
+            id="academic-tab">
+              <h2>ACADEMIC</h2>
+          </button>
+            
+          <button 
+            class="tab" data-tab="awards" role="tab"
+            aria-selected="true"
+            aria-controls="tab-awards"
+            id="awards-tab">
+              <h2>AWARDS</h2>
+          </button>
+            
+          <button 
+            class="tab" data-tab="cv" role="tab"
+            aria-selected="true"
+            aria-controls="tab-cv"
+            id="cv-tab">
+              <h2>CV</h2>
+          </button>
+            
+          <button 
+            class="tab" data-tab="volunteering" role="tab"
+            aria-selected="true"
+            aria-controls="tab-volunteering"
+            id="volunteering-tab">
+              <h2>VOLUNTEERING</h2>
+          </button>
         </nav>
         
         <!-- about-me Panel -->
-        <div class="panel-content" id="tab-about-me">
+        <section class="panel-content" id="tab-about-me" role="tabpanel" aria-labelledby="about-me-tab">
           <div class="about-me-log" id="about-meLog">
             <p>
               I've been writing code since 2017, when I first started building web projects in Salvador. What began as curiosity turned into a career spanning fintech, cybersecurity, and government systems — and I'm still just getting started.
@@ -64,19 +112,19 @@
               I hold certifications in web accessibility and cybersecurity, speak four languages, and I'm finishing my Computer Science degree at UFBA in July 2026. I'm driven by hard problems, scalable systems, and the belief that the best code is written by people who actually care about what it does.
             </p>
           </div>
-        </div>
+        </section>
         
         <!-- Other Panels (placeholder content) -->
-        <div class="panel-content hidden" id="tab-professional">
+        <section class="panel-content hidden" role="tabpanel" id="tab-professional" aria-labelledby="tab-professional" >
           <div class="placeholder-panel">
             <p>// PROFESSIONAL EXPERIENCE — 5 ENTRIES LOADED</p>
             
             <div class="contact-row accordion-row open">
-              <div class="accordion-header">
+              <button class="accordion-header">
                 <span class="tag">SEGURA</span>
                 <span class="acc-title">SOFTWARE ENGINEER</span>
                 <span class="acc-arrow">▶</span>
-              </div>
+              </button>
               <div class="accordion-body">
                 <p>May 2025 – Feb 2026 · São Paulo, Brazil</p>
                 <p>Development of corporate cybersecurity solutions focused on Privileged Access Management (PAM). Built secure, scalable backend systems in PHP, designed APIs integrating authentication and access control, and participated in architecture decisions across cross-functional teams.</p>
@@ -84,11 +132,11 @@
             </div>
             
             <div class="contact-row accordion-row">
-              <div class="accordion-header">
+              <button class="accordion-header">
                 <span class="tag">PICPAY</span>
                 <span class="acc-title">SOFTWARE ENGINEER</span>
                 <span class="acc-arrow">▶</span>
-              </div>
+              </button>
               <div class="accordion-body">
                 <p>Oct 2021 – Mar 2024 · São Paulo, Brazil</p>
                 <p>Built and optimized one of Brazil's most advanced P2P and P2B lending platforms. Maintained 98% test coverage on a critical microservice using PHPUnit. Implemented Kafka for real-time messaging between microservices and used Harness for CI/CD pipeline automation.</p>
@@ -96,11 +144,11 @@
             </div>
             
             <div class="contact-row accordion-row">
-              <div class="accordion-header">
+              <button class="accordion-header">
                 <span class="tag">ACP GROUP</span>
                 <span class="acc-title">SOFTWARE DEVELOPMENT ANALYST</span>
                 <span class="acc-arrow">▶</span>
-              </div>
+              </button>
               <div class="accordion-body">
                 <p>Jan 2021 – Nov 2021 · Salvador, Brazil</p>
                 <p>Developed and maintained systems used by the Government of the State of Bahia to manage over 50,000 institutional accounts. Built frontend interfaces with Vue.js and integrated Microsoft Active Directory and PowerShell automation.</p>
@@ -108,11 +156,11 @@
             </div>
             
             <div class="contact-row accordion-row">
-              <div class="accordion-header">
+              <button class="accordion-header">
                 <span class="tag">STARTONAPP</span>
                 <span class="acc-title">WEB DEVELOPER</span>
                 <span class="acc-arrow">▶</span>
-              </div>
+              </button>
               <div class="accordion-body">
                 <p>Feb 2019 – Jun 2019 · Salvador, Brazil</p>
                 <p>Backend development using Python and Flask. Built responsive frontend interfaces with Angular 2+. Contributed to a Brazilian TV broadcaster's website, improving streaming content delivery and user experience.</p>
@@ -120,11 +168,11 @@
             </div>
             
             <div class="contact-row accordion-row">
-              <div class="accordion-header">
+              <button class="accordion-header">
                 <span class="tag">EQUILIBRA DIGITAL</span>
                 <span class="acc-title">WEB DEVELOPER</span>
                 <span class="acc-arrow">▶</span>
-              </div>
+              </button>
               <div class="accordion-body">
                 <p>Oct 2017 – Mar 2019 · Salvador, Brazil</p>
                 <p>Developed web solutions aligned with client objectives. Facilitated software development by organizing brainstorming sessions, breaking tasks into milestones and coordinating project workflows.</p>
@@ -133,8 +181,9 @@
             
             <div class="contact-row dim">[ SHOWING 5 OUT OF 5 ]</div>
           </div>
-        </div>
-        <div class="panel-content hidden" id="tab-skills">
+        </section>
+
+        <section class="panel-content hidden" role="tabpanel" id="tab-skills" aria-labelledby="skills-tab">
           <div class="placeholder-panel">
             <p>// Backend</p>
             <span class="tag">PHP (Laravel / HyperF)</span>
@@ -167,33 +216,34 @@
             <span class="tag">DESIGN PATTERNS</span>
             <span class="tag">OOP</span>
           </div>
-        </div>
-        <div class="panel-content hidden" id="tab-academic">
+        </section>
+
+        <section class="panel-content hidden" role="tabpanel" id="tab-academic" aria-labelledby="academic-tab">
           <div class="placeholder-panel">
             <p>// academic — 3 FILES</p>
             <div class="contact-row">BACHELORS IN COMPUTER SCIENCE @ FEDERAL UNIVERSITY OF BAHIA</div>
             <div class="contact-row accordion-row">
-              <div class="accordion-header">
+              <button class="accordion-header">
                 <span class="acc-title">MEMBER OF TOLOCA RESEARCH GROUP</span>
                 <span class="acc-arrow">▶</span>
-              </div>
+              </button>
               <div class="accordion-body">
                 <p>ToLOCA Research Group is a research group at the Institute of Computing of the Federal University of Bahia focused on the theoretical foundations of Computer Science. Founded in 2019, the group brings together researchers and students interested in areas such as Graph Theory, Combinatorics, Algorithms, Optimization, Logic, and their applications in Computing and Artificial Intelligence. The group also promotes academic seminars, collaborative research projects, and scientific publications in partnership with Brazilian and international institutions.</p>
               </div>
             </div>
             <div class="contact-row accordion-row">
-              <div class="accordion-header">
+              <button class="accordion-header">
                 <span class="acc-title">UNDERGRADUATE RESEARCH PROJECT ON OPTIMISATION</span>
                 <span class="acc-arrow">▶</span>
-              </div>
+              </button>
               <div class="accordion-body">
                 <p>Undergraduate Research Project focused on optimizing the performance and accessibility of the GainTime Framework, aiming to promote a lighter and more inclusive web experience. Responsible for improving loading times and implementing accessibility features across the frontend framework, following web accessibility best practices to enhance usability for different user profiles. The project was conducted under the supervision of Professor Maycon Leone Maciel Peixoto at the Federal University of Bahia</p>
               </div>
             </div>
           </div>
-        </div>
+        </section>
         
-        <div class="panel-content hidden" id="tab-awards">
+        <section class="panel-content hidden" id="tab-awards">
           <div class="placeholder-panel">
             <div class="priority">[ 🥇 1ST PLACE ] BAHIA CHALLENGES HACKATHON
                 <p>
@@ -211,8 +261,9 @@
                 </p>
             </div>
           </div>
-        </div>
-        <div class="panel-content hidden" id="tab-cv">
+        </section>
+
+        <section class="panel-content hidden" id="tab-cv" role="tabpanel" id="tab-cv" aria-labelledby="cv-tab">
           <div class="placeholder-panel">
           <object
             data="./cv.pdf#view=FitH&toolbar=0&navpanes=0"
@@ -224,50 +275,51 @@
             No biggie... you can <a href="cv.pdf">click here to download the PDF file.</a></p>
             </object>
           </div>
-        </div>
-        <div class="panel-content hidden" id="tab-volunteering">
+        </section>
+
+        <section class="panel-content hidden" id="tab-volunteering" role="tabpanel" id="tab-volunteering" aria-labelledby="volunteering-tab">
           <div class="placeholder-panel volunteering-panel">
             <div class="contact-row accordion-row open">
-              <div class="accordion-header">
+              <button class="accordion-header">
                 <span class="acc-title">TEACHING ASSISTANT - GRAPH THEORY</span>
                 <span class="acc-arrow">▶</span>
-              </div>
+              </button>
               <div class="accordion-body">
                 <p>Teaching Assistant for the Graph Theory course, providing personalized support to students by clarifying concepts and answering questions related to graph algorithms, combinatorics, and theoretical foundations. Assisted with reviewing exercises and assignments, offering constructive feedback to support students’ academic development and strengthen their problem-solving skills.</p>
               </div>
             </div>
 
             <div class="contact-row accordion-row">
-              <div class="accordion-header">
+              <button class="accordion-header">
                 <span class="acc-title">TEACHING ASSISTANT - DATA STRUCTURES AND ALGORITHMS</span>
                 <span class="acc-arrow">▶</span>
-              </div>
+              </button>
               <div class="accordion-body">
                 <p>Monitoring the Data Structures and Algorithms discipline, providing personalized assistance to students, offering support and clarifying doubts related to the content, helping to correct lists of exercises and assignments and providing constructive feedback to assist in students' academic development.</p>
               </div>
             </div>
 
             <div class="contact-row accordion-row">
-              <div class="accordion-header">
+              <button class="accordion-header">
                 <span class="acc-title">QUALITY MANAGER @ INFOJR UFBA</span>
                 <span class="acc-arrow">▶</span>
-              </div>
+              </button>
               <div class="accordion-body">
                 <p>Development and implementation of strategic plans that aim to improve processes and procedures related to quality. Tasked with establishing and monitoring Objectives and Key Results (OKRs) to ensure alignment with organizational objectives, using tools such as SWOT analysis, identifying areas for improvement and growth opportunities, guiding informed decision-making to drive performance and company competitiveness.</p>
               </div>
             </div>
 
             <div class="contact-row accordion-row">
-              <div class="accordion-header">
+              <button class="accordion-header">
                 <span class="acc-title">GENERAL CHAIR @ SEMCOMP 2017</span>
                 <span class="acc-arrow">▶</span>
-              </div>
+              </button>
               <div class="accordion-body">
                 <p>Leadership of several crucial activities to ensure the success of the event, including managing the schedule and content of the lectures, negotiating with sponsors for strategic partnerships, defining and controlling the budget, coordinating publicity and marketing strategies, responsible for logistical coordination, ensuring the infrastructure required for the event and post-event evaluation to identify areas for improvement.</p>
               </div>
             </div>
           </div>
-        </div>
+        </section>
         
         
       </div>
@@ -351,8 +403,8 @@
             </div>
             <div class="detail-row">
               <span class="detail-label">SOCIAL:</span>
-              <span class="detail-value"> <a href="https://www.linkedin.com/in/barbgluz/?locale=en-US">LinkedIn</a></span>
-              <span class="detail-value"> <a href="https://github.com/barbgluz/">GitHub</a></span>
+              <span class="detail-value"> <a href="https://www.linkedin.com/in/barbgluz/?locale=en-US" target="_blank">LinkedIn</a></span>
+              <span class="detail-value"> <a href="https://github.com/barbgluz/" target="_blank">GitHub</a></span>
             </div>
           </div>
         </div>

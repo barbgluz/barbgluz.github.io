@@ -30,6 +30,17 @@
   --glow-dim:     0 0 4px #00cc3344;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 700;
+  line-height: 1;
+  font-size: 1.2rem;
+}
+
 a {
   color: var(--green);
 }
@@ -552,7 +563,7 @@ p {
   background: var(--green-faint);
   border: 1px solid var(--border-dim);
   padding: 1px 6px;
-  font-size: 0.8rem;
+  font-size: 1.2rem;
   color: var(--text-dim);
   letter-spacing: 0.08em;
 }
@@ -587,17 +598,21 @@ p {
 .accordion-header {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 6px 10px;
+  justify-content: flex-start;
+  text-align: left;
   width: 100%;
+  gap: 12px;
+  background: none;
+  color: inherit;
+  border: none;
+  font: inherit;
+  cursor: pointer;
+  padding: 6px 10px;
 }
 
 .acc-title {
+  text-align: left;
   flex: 1;
-  color: var(--green);
-  font-family: var(--font-display);
-  font-size: 1rem;
-  letter-spacing: 0.04em;
 }
 
 .acc-arrow {
@@ -605,6 +620,7 @@ p {
   font-size: 0.7rem;
   transition: transform 0.2s;
   flex-shrink: 0;
+  margin-right: 10px;
 }
 
 .accordion-row.open .acc-arrow {
@@ -613,7 +629,7 @@ p {
 
 .accordion-body {
   display: none;
-  padding: 10px 12px 12px 12px;
+  padding: 10px 12px 21px 12px;
   border-top: 1px solid var(--border-dim);
   display: flex;
   flex-direction: column;
