@@ -41,13 +41,6 @@ document.querySelectorAll('.accordion-row').forEach(row => {
   });
 });
 
-chatInput.addEventListener('keydown', e => {
-  if (e.key === 'Enter' && !e.shiftKey) {
-    e.preventDefault();
-    sendMessage();
-  }
-});
-
 
 // ─── SPECIAL CHAR BUTTONS ──────────────────────
 document.querySelectorAll('.char-btn').forEach(btn => {
